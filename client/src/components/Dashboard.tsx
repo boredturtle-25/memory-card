@@ -19,12 +19,12 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
     setIsLoading(true);
     try {
       const [scoreResult, total, bronze, silver, gold, diamond] = await Promise.all([
-        getScore(walletAddress!),
-        getTotalGames(),
-        hasBadge(walletAddress!, "bronze"),
-        hasBadge(walletAddress!, "silver"),
-        hasBadge(walletAddress!, "gold"),
-        hasBadge(walletAddress!, "diamond"),
+        getScore(walletAddress!).catch(() => null),
+        getTotalGames().catch(() => 0),
+        hasBadge(walletAddress!, "bronze").catch(() => false),
+        hasBadge(walletAddress!, "silver").catch(() => false),
+        hasBadge(walletAddress!, "gold").catch(() => false),
+        hasBadge(walletAddress!, "diamond").catch(() => false),
       ]);
 
       if (scoreResult) {
