@@ -13,8 +13,8 @@ export default function DashboardPage() {
     <div className="max-w-3xl mx-auto py-8 px-4">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-rose-900">Dashboard</h1>
-          <p className="text-rose-500 text-sm mt-1">Your scores, stats, and NFT badge collection</p>
+          <h1 className="text-2xl font-bold text-rose-100">Dashboard</h1>
+          <p className="text-rose-400/60 text-sm mt-1">Your scores, stats, and NFT badge collection</p>
         </div>
       </div>
       <Dashboard key={mountKey} walletAddress={walletAddress} />

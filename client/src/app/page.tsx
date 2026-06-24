@@ -13,13 +13,13 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-pink-300 bg-clip-text text-transparent">
           MemoChain
         </h1>
-        <p className="mt-3 text-rose-600/80 max-w-md">
+        <p className="mt-3 text-rose-300/70 max-w-md">
           Match pairs of cards, compete for the highest score, and earn NFT achievement badges on the Stellar blockchain.
         </p>
       </div>
 
       {!walletAddress && (
-        <div className="mb-6 px-6 py-3 bg-pink-50 border border-pink-200 rounded-xl text-sm text-pink-700 flex items-center gap-2">
+        <div className="mb-6 px-6 py-3 bg-pink-500/10 border border-pink-500/20 rounded-xl text-sm text-pink-400 flex items-center gap-2">
           <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" />
           </svg>
