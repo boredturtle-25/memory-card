@@ -170,17 +170,17 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
       <div className="flex items-center justify-between w-full max-w-md">
         <div className="flex items-center gap-6">
           <div className="text-center">
-            <div className="text-xs text-rose-400/60 uppercase tracking-wider">Moves</div>
-            <div className="text-xl font-bold text-rose-100">{moves}</div>
+            <div className="text-xs text-rose-500 uppercase tracking-wider">Moves</div>
+            <div className="text-xl font-bold text-rose-900">{moves}</div>
           </div>
           <div className="text-center">
-            <div className="text-xs text-rose-400/60 uppercase tracking-wider">Matches</div>
-            <div className="text-xl font-bold text-rose-100">{matches}/{TOTAL_CARDS / 2}</div>
+            <div className="text-xs text-rose-500 uppercase tracking-wider">Matches</div>
+            <div className="text-xl font-bold text-rose-900">{matches}/{TOTAL_CARDS / 2}</div>
           </div>
         </div>
         <div className="text-center">
-          <div className="text-xs text-rose-400/60 uppercase tracking-wider">Time</div>
-          <div className={`font-mono text-xl font-bold ${time > 180 ? "text-red-400" : "text-rose-100"}`}>
+          <div className="text-xs text-rose-500 uppercase tracking-wider">Time</div>
+          <div className={`font-mono text-xl font-bold ${time > 180 ? "text-red-400" : "text-rose-900"}`}>
             {isPlaying || gameOver ? formatTime(time) : "0:00"}
           </div>
         </div>
@@ -203,10 +203,10 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
                 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl text-2xl sm:text-3xl
                 transition-all duration-300 transform
                 ${card.isMatched
-                  ? "bg-pink-500/20 border-pink-500/50 scale-95"
+                  ? "bg-pink-100 border-pink-300/80 scale-95"
                   : card.isFlipped
-                  ? "bg-rose-800/60 border-pink-500/50 rotate-y-0"
-                  : "bg-rose-900/50 border-rose-800/50 hover:border-pink-500/50 hover:bg-rose-800/40"
+                  ? "bg-white border-pink-300/80 rotate-y-0"
+                  : "bg-white/60 border-rose-200 hover:border-pink-300/80 hover:bg-rose-50"
                 }
                 border-2 font-bold shadow-lg
                 ${card.isFlipped || card.isMatched ? "" : "hover:scale-105"}
@@ -222,7 +222,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
         </div>
       ) : (
         <div className="w-[352px] sm:w-[368px] h-[352px] sm:h-[368px] flex items-center justify-center">
-          <p className="text-rose-400/60 text-sm">Press Start to begin</p>
+          <p className="text-rose-500 text-sm">Press Start to begin</p>
         </div>
       )}
 
@@ -240,7 +240,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
         {isPlaying && (
           <button
           onClick={() => { setIsPlaying(false); setGameOver(true); }}
-          className="px-6 py-3 bg-rose-800/50 hover:bg-rose-700/50 text-rose-200 font-medium rounded-xl transition-all duration-200 border border-rose-800/40"
+          className="px-6 py-3 bg-rose-100/80 hover:bg-rose-200/50 text-rose-700 font-medium rounded-xl transition-all duration-200 border border-rose-200"
           >
             End Game
           </button>
@@ -257,21 +257,21 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
 
       {/* Score / Results */}
       {gameOver && (
-        <div className="w-full max-w-md bg-rose-950/60 border border-rose-800/30 rounded-2xl p-6 space-y-4">
-          <h3 className="text-lg font-bold text-center text-rose-100">Game Complete!</h3>
+        <div className="w-full max-w-md bg-white/80 border border-rose-200 rounded-2xl p-6 space-y-4">
+          <h3 className="text-lg font-bold text-center text-rose-900">Game Complete!</h3>
 
           <div className="grid grid-cols-3 gap-3 text-center">
-            <div className="bg-rose-900/50 rounded-xl p-3">
-              <div className="text-xs text-rose-400/60">Score</div>
-              <div className="text-xl font-bold text-pink-400">{finalScore}</div>
+            <div className="bg-rose-50/80 rounded-xl p-3">
+              <div className="text-xs text-rose-500">Score</div>
+              <div className="text-xl font-bold text-pink-600">{finalScore}</div>
             </div>
-            <div className="bg-rose-900/50 rounded-xl p-3">
-              <div className="text-xs text-rose-400/60">Moves</div>
-              <div className="text-xl font-bold text-rose-100">{moves}</div>
+            <div className="bg-rose-50/80 rounded-xl p-3">
+              <div className="text-xs text-rose-500">Moves</div>
+              <div className="text-xl font-bold text-rose-900">{moves}</div>
             </div>
-            <div className="bg-rose-900/50 rounded-xl p-3">
-              <div className="text-xs text-rose-400/60">Time</div>
-              <div className="text-xl font-bold text-rose-100">{formatTime(time)}</div>
+            <div className="bg-rose-50/80 rounded-xl p-3">
+              <div className="text-xs text-rose-500">Time</div>
+              <div className="text-xl font-bold text-rose-900">{formatTime(time)}</div>
             </div>
           </div>
 
@@ -306,7 +306,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
                 href={`https://stellar.expert/explorer/testnet/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-pink-400 hover:text-pink-300 underline"
+                className="text-xs text-pink-600 hover:text-pink-500 underline"
               >
                 View on Stellar Explorer ↗
               </a>
@@ -316,7 +316,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
           {/* Badge claiming */}
           {earnedBadges.length > 0 && (
             <div className="space-y-2">
-              <div className="text-sm font-medium text-rose-300/70 text-center">New Badges Available!</div>
+              <div className="text-sm font-medium text-rose-600/80 text-center">New Badges Available!</div>
               {earnedBadges.map((badgeId) => {
                 const badgeDef = [
                   { id: "bronze", name: "Bronze", icon: "🥉" },
@@ -329,7 +329,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
                     key={badgeId}
                     onClick={() => handleClaimBadge(badgeId)}
                     disabled={claimingBadge === badgeId}
-                    className="w-full py-2 bg-gradient-to-r from-pink-500/20 to-rose-500/20 border border-pink-500/30 hover:from-pink-500/30 hover:to-rose-500/30 text-pink-300 font-medium rounded-xl transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full py-2 bg-gradient-to-r from-pink-100 to-rose-100 border border-pink-200 hover:from-pink-200 hover:to-rose-200 text-pink-700 font-medium rounded-xl transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {claimingBadge === badgeId ? (
                       <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
@@ -347,7 +347,7 @@ export default function GameBoard({ walletAddress }: GameBoardProps) {
           )}
 
           {!walletAddress && (
-            <p className="text-xs text-rose-400/60 text-center">
+            <p className="text-xs text-rose-500 text-center">
               Connect your Freighter wallet to submit scores and earn NFT badges on-chain.
             </p>
           )}

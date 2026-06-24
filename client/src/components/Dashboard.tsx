@@ -55,7 +55,7 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
 
   if (!walletAddress) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-rose-400/60">
+      <div className="flex flex-col items-center justify-center py-20 text-rose-500">
         <span className="text-6xl mb-4">🔗</span>
         <p className="text-lg">Connect your Freighter wallet to view your dashboard</p>
       </div>
@@ -65,7 +65,7 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <svg className="animate-spin h-8 w-8 text-pink-400" viewBox="0 0 24 24">
+        <svg className="animate-spin h-8 w-8 text-pink-600" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
         </svg>
@@ -80,7 +80,7 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
         <button
           onClick={() => setRefreshTrigger((n) => n + 1)}
           disabled={isLoading}
-          className="flex items-center gap-2 px-4 py-2 bg-rose-800/50 hover:bg-rose-700/50 text-rose-200 text-sm rounded-xl transition-all duration-200 border border-rose-800/40 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 bg-rose-100/80 hover:bg-rose-200/50 text-rose-700 text-sm rounded-xl transition-all duration-200 border border-rose-200 disabled:opacity-50"
         >
           <svg
             className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
@@ -98,53 +98,53 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-rose-950/60 border border-rose-800/30 rounded-2xl p-6">
-          <div className="text-xs text-rose-400/60 uppercase tracking-wider mb-1">Best Score</div>
-          <div className="text-3xl font-bold text-pink-400">
+        <div className="bg-white/80 border border-rose-200 rounded-2xl p-6">
+          <div className="text-xs text-rose-500 uppercase tracking-wider mb-1">Best Score</div>
+          <div className="text-3xl font-bold text-pink-600">
             {bestScore ? bestScore.score : "—"}
           </div>
           {bestScore && (
-            <div className="text-xs text-rose-400/60 mt-1">
+            <div className="text-xs text-rose-500 mt-1">
               {bestScore.moves} moves · {Math.floor(bestScore.time / 60)}:{String(bestScore.time % 60).padStart(2, "0")}
             </div>
           )}
         </div>
 
-        <div className="bg-rose-950/60 border border-rose-800/30 rounded-2xl p-6">
-          <div className="text-xs text-rose-400/60 uppercase tracking-wider mb-1">Games Played</div>
-          <div className="text-3xl font-bold text-rose-400">{totalGames}</div>
+        <div className="bg-white/80 border border-rose-200 rounded-2xl p-6">
+          <div className="text-xs text-rose-500 uppercase tracking-wider mb-1">Games Played</div>
+          <div className="text-3xl font-bold text-rose-600">{totalGames}</div>
         </div>
 
-        <div className="bg-rose-950/60 border border-rose-800/30 rounded-2xl p-6">
-          <div className="text-xs text-rose-400/60 uppercase tracking-wider mb-1">Badges Earned</div>
-          <div className="text-3xl font-bold text-pink-400">{ownedBadges.length}/{BADGES.length}</div>
+        <div className="bg-white/80 border border-rose-200 rounded-2xl p-6">
+          <div className="text-xs text-rose-500 uppercase tracking-wider mb-1">Badges Earned</div>
+          <div className="text-3xl font-bold text-pink-600">{ownedBadges.length}/{BADGES.length}</div>
         </div>
       </div>
 
       {/* Badge Gallery */}
       <div>
-        <h3 className="text-lg font-semibold text-rose-100 mb-4">Achievement Badges</h3>
+        <h3 className="text-lg font-semibold text-rose-900 mb-4">Achievement Badges</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {BADGES.map((badge) => {
             const isOwned = ownedBadges.includes(badge.id);
             return (
               <div
                 key={badge.id}
-                className={`bg-rose-950/60 border rounded-2xl p-5 text-center transition-all duration-200 ${
+                className={`bg-white/80 border rounded-2xl p-5 text-center transition-all duration-200 ${
                   isOwned
-                    ? "border-pink-500/30 bg-pink-500/5"
-                    : "border-rose-800/40 opacity-50"
+                    ? "border-pink-300 bg-pink-50"
+                    : "border-rose-200 opacity-50"
                 }`}
               >
                 <div className={`text-4xl mb-2 ${isOwned ? "" : "grayscale"}`}>
                   {badge.icon}
                 </div>
-                <div className={`font-semibold text-sm ${isOwned ? "text-rose-100" : "text-rose-400/60"}`}>
+                <div className={`font-semibold text-sm ${isOwned ? "text-rose-900" : "text-rose-500"}`}>
                   {badge.name}
                 </div>
-                <div className="text-xs text-rose-400/60 mt-1">{badge.description}</div>
+                <div className="text-xs text-rose-500 mt-1">{badge.description}</div>
                 {isOwned && (
-                  <div className="mt-2 inline-flex items-center gap-1 text-xs text-pink-400">
+                  <div className="mt-2 inline-flex items-center gap-1 text-xs text-pink-600">
                     <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                     </svg>
@@ -158,13 +158,13 @@ export default function Dashboard({ walletAddress }: DashboardProps) {
       </div>
 
       {/* Wallet Info */}
-      <div className="bg-rose-950/60 border border-rose-800/30 rounded-2xl p-5">
-        <div className="text-xs text-rose-400/60 uppercase tracking-wider mb-2">Wallet</div>
+      <div className="bg-white/80 border border-rose-200 rounded-2xl p-5">
+        <div className="text-xs text-rose-500 uppercase tracking-wider mb-2">Wallet</div>
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-pink-400" />
-          <span className="text-sm font-mono text-rose-200">{walletAddress}</span>
+          <div className="w-2 h-2 rounded-full bg-pink-500" />
+          <span className="text-sm font-mono text-rose-700">{walletAddress}</span>
         </div>
-        <p className="text-xs text-rose-400/40 mt-2">
+        <p className="text-xs text-rose-400 mt-2">
           All scores and badges are stored on the Stellar blockchain
         </p>
       </div>

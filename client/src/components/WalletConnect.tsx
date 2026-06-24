@@ -59,15 +59,15 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
   if (address) {
     return (
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-pink-500/10 border border-pink-500/30 rounded-full">
-          <div className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
-          <span className="text-sm text-pink-400 font-mono">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-pink-50 border border-pink-200 rounded-full">
+          <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+          <span className="text-sm text-pink-700 font-mono">
             {address.slice(0, 4)}...{address.slice(-4)}
           </span>
         </div>
         <button
           onClick={handleDisconnect}
-          className="text-xs text-rose-400/60 hover:text-rose-200 transition-colors"
+          className="text-xs text-rose-400 hover:text-rose-600 transition-colors"
         >
           Disconnect
         </button>
