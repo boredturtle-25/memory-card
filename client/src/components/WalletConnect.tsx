@@ -59,15 +59,15 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
   if (address) {
     return (
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-full">
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm text-green-400 font-mono">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-pink-500/10 border border-pink-500/30 rounded-full">
+          <div className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
+          <span className="text-sm text-pink-400 font-mono">
             {address.slice(0, 4)}...{address.slice(-4)}
           </span>
         </div>
         <button
           onClick={handleDisconnect}
-          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          className="text-xs text-rose-400/60 hover:text-rose-200 transition-colors"
         >
           Disconnect
         </button>
@@ -85,7 +85,7 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
       <button
         onClick={handleConnect}
         disabled={isConnecting}
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white text-sm font-medium rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 disabled:opacity-50"
+        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-400 hover:to-rose-500 text-white text-sm font-medium rounded-xl transition-all duration-200 shadow-lg shadow-pink-500/25 disabled:opacity-50"
       >
         {isConnecting ? (
           <>
