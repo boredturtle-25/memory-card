@@ -8,12 +8,18 @@ interface WalletConnectProps {
   onDisconnect: () => void;
 }
 
+const DISCONNECTED_FLAG = "memochan_wallet_disconnected";
+
 export default function WalletConnect({ onConnect, onDisconnect }: WalletConnectProps) {
   const [address, setAddress] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // If the user previously disconnected, do NOT auto-connect
+    // even if Freighter still has permission for this site.
+    if (localStorage.getItem(DISCONNECTED_FLAG)) return;
+
     getWalletAddress().then((addr) => {
       if (addr) {
         setAddress(addr);
@@ -28,6 +34,7 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
     try {
       const addr = await connectWallet();
       if (addr) {
+        localStorage.removeItem(DISCONNECTED_FLAG);
         setAddress(addr);
         onConnect(addr);
       } else {
@@ -44,6 +51,7 @@ export default function WalletConnect({ onConnect, onDisconnect }: WalletConnect
   };
 
   const handleDisconnect = () => {
+    localStorage.setItem(DISCONNECTED_FLAG, "true");
     setAddress(null);
     onDisconnect();
   };
