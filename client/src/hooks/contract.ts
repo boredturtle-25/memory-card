@@ -42,14 +42,15 @@ function toScValAddress(v: string): xdr.ScVal {
 
 export async function connectWallet(): Promise<string | null> {
   try {
-    const { isConnected, requestAccess, getAddress } = await import("@stellar/freighter-api");
-    const conn = await isConnected();
-    if (!conn.isConnected) {
-      await requestAccess();
+    const { requestAccess } = await import("@stellar/freighter-api");
+    const res = await requestAccess();
+    if (res.error) {
+      console.error("Freighter requestAccess error:", res.error);
+      return null;
     }
-    const { address } = await getAddress();
-    return address;
-  } catch {
+    return res.address || null;
+  } catch (err) {
+    console.error("Freighter not available — install the Freighter browser extension:", err);
     return null;
   }
 }
@@ -57,8 +58,11 @@ export async function connectWallet(): Promise<string | null> {
 export async function getWalletAddress(): Promise<string | null> {
   try {
     const { getAddress } = await import("@stellar/freighter-api");
-    const { address } = await getAddress();
-    return address;
+    const res = await getAddress();
+    if (res.error) {
+      return null;
+    }
+    return res.address || null;
   } catch {
     return null;
   }
