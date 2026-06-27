@@ -309,3 +309,9 @@ tailwindcss = "^4"           # Utility CSS
 ## License
 
 MIT
+
+## smart contract address
+
+NEXT_PUBLIC_CONTRACT_ADDRESS=CDSGLNVKYTESPIJSUSY4DIFELFKDM4KOUI4WY2CY3UODFIYYD5YAF7RN
+NEXT_PUBLIC_RPC_URL=https://soroban-testnet.stellar.org
+NEXT_PUBLIC_NETWORK=testnet
